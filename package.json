@@ -36,8 +36,6 @@
     "start": "rollup --config=rollup.example.dev.config.js -w -m --bundleConfigAsCjs",
     "test": "jest",
     "snapshot": "jest -u",
-    "lint:fix": "eslint --fix '**/*.{ts,tsx,js,md}' && stylelint example/src/**/*.css --fix",
-    "lint": "eslint '**/*.{ts,tsx,js,md}' && stylelint example/src/**/*.css && echo 'no lint problems found!'",
     "pretty": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run test"
@@ -72,7 +70,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-html": "^1.0.2",
-    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.3",
