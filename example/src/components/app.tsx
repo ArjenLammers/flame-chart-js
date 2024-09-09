@@ -9,13 +9,16 @@ import {
     generateRandomCpuAndMemTimeseries,
     generateRandomCpuTimeseries,
     generateRandomMarks,
-    generateRandomTree,
     generateRandomWaterfallItems,
     MarksConfig,
     TimeseriesConfig,
     TreeConfig,
     WaterfallConfig,
 } from '../test-data';
+import {
+    generateMendixTree,
+    generateMendixTrees
+} from '../mendix-data';
 import { DefaultFlameChart } from './charts/default-flame-chart';
 import { FlameChartNode, FlameChartNodes, Marks, Timeseries, WaterfallItems } from '../../../src';
 import { CustomFlameChart } from './charts/custom-flame-chart';
@@ -52,7 +55,7 @@ export const App = () => {
         timeframeTimeseriesData: Timeseries;
     }>({
         flameChartData: [],
-        customFlameChartData: [[], []],
+        customFlameChartData: generateMendixTrees(),
         waterfallData: [],
         marksData: [],
         timeseriesData: [],
@@ -73,11 +76,11 @@ export const App = () => {
             setTimeout(() => {
                 if (config) {
                     if ((chartType || currentChart) === ChartType.Default) {
-                        setState((state) => ({ ...state, flameChartData: generateRandomTree(config) }));
+                        setState((state) => ({ ...state, flameChartData: generateMendixTree() }));
                     } else if ((chartType || currentChart) === ChartType.Custom) {
                         setState((state) => ({
                             ...state,
-                            customFlameChartData: [generateRandomTree(config), generateRandomTree(config)],
+                            customFlameChartData: generateMendixTrees(),
                         }));
                     }
                 }
@@ -152,10 +155,10 @@ export const App = () => {
             {currentChart === 'default' && (
                 <DefaultFlameChart
                     flameChartData={state.flameChartData}
-                    waterfallData={state.waterfallData}
-                    marksData={state.marksData}
+                    /* waterfallData={state.waterfallData}
+                    marksData={state.marksData} 
                     timeseriesData={state.timeseriesData}
-                    timeframeTimeseriesData={state.timeframeTimeseriesData}
+                    timeframeTimeseriesData={state.timeframeTimeseriesData} */
                     stylesSettings={stylesSettings}
                     patternsSettings={patternsSettings}
                     onSelect={setSelectedData}
